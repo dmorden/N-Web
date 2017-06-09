@@ -26,6 +26,7 @@
 
 .App-dialog {
 	overflow: scroll;
+	min-height: 400px;
 }
 
 .App-dialog-logo {

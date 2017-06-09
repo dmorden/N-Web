@@ -1,0 +1,18 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Demonstrates using a built-in Node.js module to make an HTTPS request.
+Resources:
+  peopleAirtable:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs4.3
+      CodeUri: .
+      Description: Demonstrates using a built-in Node.js module to make an HTTPS request.
+      MemorySize: 128
+      Timeout: 60
+      Role: 'arn:aws:iam::475239604701:role/lambda_basic_execution'
+      Environment:
+        Variables:
+          appName: app
+          appKey: key
