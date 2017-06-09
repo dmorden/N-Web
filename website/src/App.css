@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-	width: 90%;
+	width: 70%;
 	max-width: 90%;
 }
 
@@ -22,4 +22,29 @@
 
 .App-contactForm > div {
 	margin: 50%;
+}
+
+.App-dialog {
+	overflow: scroll;
+}
+
+.App-dialog-logo {
+	width: 400px;
+	position: absolute;
+	right: 20px;
+	top: 40px;
+}
+
+@media (max-width: 414px) {
+	.App-dialog-logo {
+		width: 100px;
+		top: 12px;
+		right: 12px;
+	}
+}
+
+@media (max-width: 320px) {
+	.App-dialog div {
+
+	}
 }

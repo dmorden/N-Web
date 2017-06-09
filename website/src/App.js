@@ -5,6 +5,8 @@ import Paper from 'material-ui/Paper';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
+import Divider from 'material-ui/Divider';
+
 import logo from './neurasense-transparent-logo.png';
 import './App.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
@@ -71,44 +73,50 @@ class App extends Component {
 				onTouchTap={this.closeContactForm}
 			/>,
 			<RaisedButton label="Send Contact Info" secondary={true} style={style}
-						  onClick={this.onClickSubmitContactForm}/>
+						  onClick={this.onClickSubmitContactForm}/>,
+			<p>&nbsp;</p>
 		];
 
 		return (
-			<Dialog open={true} title="Contact Us..." actions={actions} >
-				<div style={{textAlign: 'center', position: 'relative', height: '400px'}}>
-					<div style={{textAlign: 'center', position: 'absolute'}}>
-						<TextField
-							onBlur={this.onFocusSetActiveTextField.bind(null, '')}
-							onFocus={this.onFocusSetActiveTextField.bind(null, 'name')}
-							onChange={event => this.onChangeSetValue('name', event.target.value)}
-							hintText="First Last Name"
-							floatingLabelText="Name"
-							errorText={!this.state.name ? `This field is required` : ''}
-						/>
-						<br />
-						<TextField
-							onBlur={this.onFocusSetActiveTextField.bind(null, '')}
-							onFocus={this.onFocusSetActiveTextField.bind(null, 'email')}
-							onChange={event => this.onChangeSetValue('email', event.target.value)}
-							hintText="Email Address"
-							floatingLabelText="Email"
-							errorText={!this.state.email ? `This field is required` : ''}
-						/>
-						<br />
-						<TextField
-							hintText="Phone Number"
-							floatingLabelText="Phone"
-						/>
-						<br />
-						<TextField
-							multiLine={true}
-							rows={4}
-							hintText="Short Message"
-							floatingLabelText="Message"
-						/>
-					</div>
+			<Dialog className="App-dialog" open={true} title="Contact Us..." actions={actions} repositionOnUpdate={false} autoDetectWindowHeight={false}>
+				<div style={{textAlign: 'center', position: 'relative'}}>
+					<TextField
+						className="App-dialog-textField"
+						style={{margin: 0, display: 'block'}}
+						onBlur={this.onFocusSetActiveTextField.bind(null, '')}
+						onFocus={this.onFocusSetActiveTextField.bind(null, 'name')}
+						onChange={event => this.onChangeSetValue('name', event.target.value)}
+						hintText="First Last Name"
+						floatingLabelText="Name"
+						errorText={!this.state.name ? `This field is required` : ''}
+					/>
+					<TextField
+						className="App-dialog-textField"
+						style={{margin: 0, display: 'block'}}
+						onBlur={this.onFocusSetActiveTextField.bind(null, '')}
+						onFocus={this.onFocusSetActiveTextField.bind(null, 'email')}
+						onChange={event => this.onChangeSetValue('email', event.target.value)}
+						hintText="Email Address"
+						floatingLabelText="Email"
+						errorText={!this.state.email ? `This field is required` : ''}
+					/>
+					<TextField
+						className="App-dialog-textField"
+						style={{margin: 0, display: 'block'}}
+						hintText="Phone Number"
+						floatingLabelText="Phone"
+					/>
+					<TextField
+						className="App-dialog-textField"
+						style={{margin: 0, display: 'block'}}
+						multiLine={true}
+						rows={1}
+						hintText="Short Message"
+						floatingLabelText="Message"
+					/>
 				</div>
+				<img src={logo} className="App-dialog-logo" />
+
 			</Dialog>
 		);
 	};
