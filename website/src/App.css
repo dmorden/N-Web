@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+	width: 90%;
+	max-width: 90%;
+}
+
+
+.App-intro {
+  font-size: large;
+}
+
+.App-contactForm {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.App-contactForm > div {
+	margin: 50%;
+}
