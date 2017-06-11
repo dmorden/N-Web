@@ -21,8 +21,7 @@ const formKeysMap = {
 	"phone": "phone"
 };
 
-const doSubmitContactForm = (state, callback = () => {
-}) => {
+const doSubmitContactForm = (state, callback = () => {}) => {
 
 	// Airtable names may not match our form names
 	const data = Object.keys(formKeysMap).reduce((map, key) => {
@@ -39,8 +38,6 @@ const doSubmitContactForm = (state, callback = () => {
 		cache: 'default',
 		body: JSON.stringify(data)
 	};
-
-	console.log('data', data);
 
 	fetch(AWS_API_Gateway.contacts, myInit)
 		.then(function (response) {
@@ -59,6 +56,7 @@ const doSubmitContactForm = (state, callback = () => {
 ReactDOM.render(
 	<MuiThemeProvider>
 		<App
+			windowHeight={window.innerHeight}
 			onSubmitContactForm={doSubmitContactForm}/>
 	</MuiThemeProvider>, document.getElementById('root'));
 

@@ -1,51 +1,47 @@
 .App {
-  text-align: center;
+	padding: 0;
+	margin: 0;
 }
 
 .App-logo {
-	width: 70%;
-	max-width: 90%;
+	width: 90%;
+	background-color: white;
+	text-align: center;
+	margin: 0 5vw;
 }
 
-
-.App-intro {
-  font-size: large;
+.App-byline {
+	text-align: center;
+	font-size: large;
+	font-size: 5vw;
+	font-family: 'Roboto', sans-serif;
 }
 
-.App-contactForm {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-
-.App-contactForm > div {
-	margin: 50%;
-}
-
-.App-dialog {
-	overflow: scroll;
+.App-contactDialog {
 	min-height: 400px;
+	background-color: rgba(96, 125, 139, 0.34);
+	margin: 0;
+	border: 1px solid transparent;/* hack to ge rid of whitespace at top of dialog*/
 }
 
-.App-dialog-logo {
-	width: 400px;
-	position: absolute;
-	right: 20px;
-	top: 40px;
+.App-contactDialog > h1 {
+	color: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 0;
 }
 
-@media (max-width: 414px) {
-	.App-dialog-logo {
-		width: 100px;
-		top: 12px;
-		right: 12px;
-	}
+.App-contactDialog-form {
+	display: block;
+	width: 300px;
+	padding: 30px 0 30px 30px;
+	margin: 0 auto;
 }
 
-@media (max-width: 320px) {
-	.App-dialog div {
+.App-contactDialog-actions {
+	text-align: center;
+}
 
-	}
+.App-actions {
+	text-align: center;
 }
