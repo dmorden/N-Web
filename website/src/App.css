@@ -1,0 +1,81 @@
+.App {
+	padding: 0;
+	margin: 0;
+}
+
+.App-logo {
+	width: 70%;
+	background-color: white;
+	text-align: center;
+	margin: 0 14vw;
+}
+
+.App-byline {
+	text-align: center;
+	font-size: large;
+	font-size: 5vw;
+	font-family: 'Roboto', sans-serif;
+}
+
+.App-contactDialog {
+	min-height: 400px;
+	background-color: rgba(96, 125, 139, 0.34);
+	margin: 0;
+	border: 1px solid transparent;/* hack to ge rid of whitespace at top of dialog*/
+}
+
+.App-header {
+	text-align: center;
+	margin: 0;
+}
+
+.App-header > h1 {
+	color: rgba(255, 255, 255, 0.5);
+	margin-top: 60px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	font-family: Roboto, sans-serif;
+}
+
+.App-header > small {
+	color: rgba(6, 23, 60, 0.5);
+	width: 240px;
+	display: inline-block;
+	margin: 12px 0 0 0;
+}
+
+.App-messages {
+	height: 50px;
+}
+
+.App-contactDialog-form {
+	display: block;
+	width: 300px;
+	padding: 0 0 30px 30px;
+	margin: 0 auto;
+}
+
+.App-contactDialog-actions {
+	text-align: center;
+	height: 100px;
+}
+
+.App-actions {
+	text-align: center;
+}
+
+.App-contactDialog-close {
+	position: absolute !important;
+	right: 0px;
+	opacity: 0.25;
+}
+
+.App-contactDialog-close:hover {
+	opacity: 0.75;
+}
+
+.App-footer {
+	text-align: center;
+	color: #bfbfbf;
+	margin: 15px;
+}
