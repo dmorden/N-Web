@@ -12,7 +12,6 @@ import ActionHome from 'material-ui/svg-icons/navigation/close';
 
 import logo from './NeuraSenseWebLogo.png';
 import './App.css';
-import '@material/layout-grid/dist/mdc.layout-grid.css';
 
 const style = {
 	margin: 12
