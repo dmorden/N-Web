@@ -7,7 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const AWS_API_Gateway = {
-	contacts: 'https://g2r6kco4kk.execute-api.us-east-1.amazonaws.com/prod/contacts'
+	contacts: 'https://xmka41h388.execute-api.us-east-1.amazonaws.com/prod/contacts'
 };
 
 // Needed for onTouchTap
