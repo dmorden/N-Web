@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import logo from './neurasense-transparent-logo.png';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
+import SvgIconFace from 'material-ui/svg-icons/action/face';
+
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/navigation/close';
+
+import logo from './NeuraSenseWebLogo.png';
 import './App.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
 
@@ -17,7 +23,7 @@ const initialState = () => ({
 	showContactSaved: false,
 	submitStatusMessage: '',
 	activeTextField: '',
-	windowHeight: 400,
+	submitContactOk: false,
 	name: '',
 	email: '',
 	phone: '',
@@ -30,10 +36,10 @@ class App extends Component {
 		super(props);
 		this.state = initialState();
 		this.onSubmitContactForm = props.onSubmitContactForm.bind(this);
+		this.renderSubmitStatusMessage = this.renderSubmitStatusMessage.bind(this);
 		this.closeContactForm = this.closeContactForm.bind(this);
 		this.onSubmitContactFormAPIResponse = this.onSubmitContactFormAPIResponse.bind(this);
 		this.renderContactFormInputFields = this.renderContactFormInputFields.bind(this);
-		this.renderContactFormResponse = this.renderContactFormResponse.bind(this);
 		this.onChangeSetValue = this.onChangeSetValue.bind(this);
 		this.onClickSubmitContactForm = this.onClickSubmitContactForm.bind(this);
 		this.onFocusSetActiveTextField = this.onFocusSetActiveTextField.bind(this);
@@ -50,9 +56,10 @@ class App extends Component {
 		this.setState(updateState);
 	}
 
-	onSubmitContactFormAPIResponse(errorMessage, ok) {
-		const submitStatusMessage = ok === 'ok' ? `Thank you. We will be in touch soon.` : errorMessage;
-		this.setState({submitStatusMessage});
+	onSubmitContactFormAPIResponse(errorMessage) {
+		const submitStatusMessage = errorMessage ? errorMessage : `Thank you. We will be in touch soon.`;
+		const submitContactOk = !errorMessage;
+		this.setState({submitStatusMessage, submitContactOk});
 	}
 
 	onClickSubmitContactForm() {
@@ -62,13 +69,6 @@ class App extends Component {
 
 	closeContactForm() {
 		this.setState(initialState());
-	}
-
-	renderContactFormResponse(message) {
-		return <Snackbar open={true}
-						 message={message}
-						 autoHideDuration={5000}
-						 onRequestClose={this.closeContactForm}/>
 	}
 
 	renderContactFormInputFields() {
@@ -118,6 +118,25 @@ class App extends Component {
 		);
 	}
 
+	renderSubmitStatusMessage() {
+
+		const status = <Chip className="App-submitStatusMessage-chip"
+							 style={{margin: '23px auto', position: 'absolute'}}>
+			<Avatar color="#444" icon={<SvgIconFace />}/>
+			{this.state.submitStatusMessage}
+		</Chip>;
+
+		const greeting = this.state.submitStatusMessage ? status : ''
+			;
+
+		return (
+			<div className="App-messages">
+				{greeting}
+			</div>
+		);
+
+	}
+
 	renderContactForm() {
 
 		if (this.state.showContact !== true) {
@@ -128,36 +147,39 @@ class App extends Component {
 
 		const actions = [];
 
-		if (this.state.showContactSaved) {
-			actions.push(<FlatButton
-				key={actions.length}
-				label="Ok"
-				primary={true}
-				onTouchTap={this.closeContactForm}/>)
-		} else {
-			actions.push(<FlatButton
-				key={actions.length}
-				label="Cancel"
-				primary={true}
-				onTouchTap={this.closeContactForm}/>);
-			actions.push(<RaisedButton
-				key={actions.length}
-				label="Send Contact Info"
-				secondary={true}
-				style={style}
-				onClick={this.onClickSubmitContactForm}/>);
-		}
+		actions.push(<FlatButton
+			key={actions.length}
+			label="Cancel"
+			primary={true}
+			onTouchTap={this.closeContactForm}/>);
 
-		const message = this.state.submitStatusMessage ? this.state.submitStatusMessage : `Sending contact info...`;
+		actions.push(<RaisedButton
+			key={actions.length}
+			label="Send Contact Info"
+			secondary={true}
+			style={style}
+			onClick={this.onClickSubmitContactForm}/>);
+
 		return (
 			<div className="App-contactDialog">
 
-				<h1>Contact Us...</h1>
+				<IconButton className="App-contactDialog-close"
+							iconStyle={{width: 60, height: 60}}
+							style={{width: 120, height: 120, padding: 30}}
+							onTouchTap={this.closeContactForm}>
+					<ActionHome />
+				</IconButton>
+
+				<div className="App-header">
+					<h1>Contact Us</h1>
+					<small>Leave your name, email and a brief message and we will get back to you.</small>
+				</div>
 
 				<div style={{minHeight: '300px'}}>
 
 					<div className="App-contactDialog-form">
-						{this.state.showContactSaved ? this.renderContactFormResponse(message) : this.renderContactFormInputFields()}
+						{this.renderContactFormInputFields()}
+						{this.renderSubmitStatusMessage()}
 					</div>
 
 					<div className="App-contactDialog-actions">
@@ -182,11 +204,13 @@ class App extends Component {
 				</div>
 				<div className="App-hero">
 					<img src={logo} className="App-logo" alt="NeuraSense"/>
-					<p className="App-byline">Turning The Subjective Into The Objective!</p>
 				</div>
 				<div className="App-actions">
 					<RaisedButton label="Contact Us" secondary={true} style={style}
 								  onClick={this.onClickRenderContactForm}/>
+				</div>
+				<div className="App-footer">
+					<small>Copyright © Neurasense 2017 • All Rights Reserved</small>
 				</div>
 			</div>
 		);
