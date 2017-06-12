@@ -12,7 +12,6 @@ import ActionHome from 'material-ui/svg-icons/navigation/close';
 
 import logo from './NeuraSenseWebLogo.png';
 import './App.css';
-import '@material/layout-grid/dist/mdc.layout-grid.css';
 
 const style = {
 	margin: 12
@@ -60,6 +59,7 @@ class App extends Component {
 		const submitStatusMessage = errorMessage ? errorMessage : `Thank you. We will be in touch soon.`;
 		const submitContactOk = !errorMessage;
 		this.setState({submitStatusMessage, submitContactOk});
+		setTimeout(this.closeContactForm, 3000);
 	}
 
 	onClickSubmitContactForm() {
